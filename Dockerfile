@@ -1,13 +1,11 @@
-FROM node:8
-MAINTAINER Jared Scott <jscott@convertro.com>
+FROM node:lts-alpine
+MAINTAINER Jared Scott <jscott.scott@variable.team>
 
-RUN apt-get update && apt-get install -y \
+RUN apk add --update \
     git \
     openssh-client \
     python3 \
-    python3-pip \
-    && pip3 install mkdocs \
-    && pip3 install requests \ 
-    && pip3 install gitpython \
-    && apt-get clean
-
+    python3-dev \
+    py3-pip \
+    util-linux \
+    && rm -rf /var/cache/apk/*
